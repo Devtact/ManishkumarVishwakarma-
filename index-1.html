@@ -1,55 +1,351 @@
+<!-- signup-page.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth select-none">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D365 Portfolio</title>
-<script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manishkumar Vishwakarma | Creative Enterprise Architect & Dev Lead</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050811;
+            overflow-x: hidden;
+        }
+        [x-cloak] { display: none !important; }
+        
+        /* High-End Creative Animation Canvas */
+        .glowing-mesh {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 240, 255, 0.12) 0%, rgba(5, 8, 17, 0) 60%),
+                        radial-gradient(circle at 0% 40%, rgba(147, 51, 234, 0.08) 0%, rgba(5, 8, 17, 0) 50%);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+            border-color: #00F0FF;
+        }
+        
+        /* Framer-motion style fluid animations via custom CSS Utilities */
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
 </head>
-<body class="bg-[#0B0F19] text-white font-sans">
-<div class="max-w-6xl mx-auto px-6 py-20">
-<h1 class="text-5xl font-bold leading-tight">Architecting Enterprise Dynamics 365 & Power Platform Solutions at Scale.</h1>
-<p class="mt-6 text-slate-300 text-lg max-w-3xl">
-Senior Dynamics 365 Technical Consultant & Development Lead specializing in CRM Architecture, Power Platform, Plugins, JavaScript, C#, and .NET.
-</p>
+<body class="text-slate-200 antialiased glowing-mesh" x-data="{ mobileMenuOpen: false }">
 
-<div class="mt-8 flex gap-4">
-<button class="bg-cyan-400 text-black px-6 py-3 rounded-full font-semibold">Download Resume</button>
-<button class="border border-slate-600 px-6 py-3 rounded-full">Let's Connect</button>
-</div>
+    <!-- INTERACTIVE FLOATING NAV -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl bg-[#090D1A]/70 backdrop-blur-xl z-50 border border-slate-850 rounded-full transition-all duration-500 hover:border-cyan-500/30">
+        <div class="px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-md font-bold tracking-widest text-white group">
+                MV<span class="text-[#00F0FF] inline-block transition-transform duration-300 group-hover:rotate-180">.</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-wider">
+                <a href="#expertise" class="text-slate-400 hover:text-cyan-400 transition-colors">Core Capabilities</a>
+                <a href="#creative-mindset" class="text-slate-400 hover:text-cyan-400 transition-colors">Creative Matrix</a>
+                <a href="#experience" class="text-slate-400 hover:text-cyan-400 transition-colors">Timeline</a>
+                <a href="#projects" class="text-slate-400 hover:text-cyan-400 transition-colors">Insights</a>
+                <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 px-4 py-2 rounded-full font-bold transition-all transform hover:scale-105">Let's Connect</a>
+            </div>
 
-<div class="grid md:grid-cols-3 gap-6 mt-20">
-<div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-<h2 class="text-xl font-semibold">Core Systems</h2>
-<ul class="mt-4 text-slate-300 space-y-2">
-<li>Dynamics 365 CE</li>
-<li>CRM Architecture</li>
-<li>Field Service</li>
-</ul>
-</div>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu">
+                <i class="ri-menu-4-fill text-xl" x-show="!mobileMenuOpen"></i>
+                <i class="ri-close-fill text-xl" x-show="mobileMenuOpen" x-cloak></i>
+            </button>
+        </div>
 
-<div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-<h2 class="text-xl font-semibold">Development</h2>
-<ul class="mt-4 text-slate-300 space-y-2">
-<li>C# & .NET</li>
-<li>Custom Plugins</li>
-<li>JavaScript</li>
-</ul>
-</div>
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-cloak class="absolute top-20 left-0 w-full bg-[#050811]/95 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-2xl md:hidden">
+            <a href="#expertise" @click="mobileMenuOpen = false" class="block text-slate-300 text-sm font-medium">Core Capabilities</a>
+            <a href="#creative-mindset" @click="mobileMenuOpen = false" class="block text-slate-300 text-sm font-medium">Creative Matrix</a>
+            <a href="#experience" @click="mobileMenuOpen = false" class="block text-slate-300 text-sm font-medium">Timeline</a>
+            <a href="#projects" @click="mobileMenuOpen = false" class="block text-slate-300 text-sm font-medium">Insights</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block text-[#00F0FF] text-sm font-bold">Let's Connect →</a>
+        </div>
+    </nav>
 
-<div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-<h2 class="text-xl font-semibold">Automation</h2>
-<ul class="mt-4 text-slate-300 space-y-2">
-<li>Power Platform</li>
-<li>Power Apps</li>
-<li>Power Automate</li>
-</ul>
-</div>
-</div>
+    <!-- CINEMATIC HERO SECTION -->
+    <section class="min-h-screen flex items-center pt-28 px-6 max-w-5xl mx-auto relative">
+        <div class="w-full animate-reveal">
+            <div class="inline-flex items-center space-x-2 bg-cyan-950/30 border border-cyan-800/40 px-4 py-1.5 rounded-full text-xs text-cyan-400 font-semibold tracking-wide mb-8 animate-float">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00F0FF]"></span>
+                <span>Bridging Rigid Architecture with Creative Execution</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.05] mb-8">
+                Engineering Systems.<br>
+                Designing <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-purple-400 to-indigo-400">Impact</span>.
+            </h1>
+            
+            <p class="text-md sm:text-lg text-slate-400 leading-relaxed max-w-2xl mb-12 font-light">
+                Senior Technical Consultant & Development Lead. I orchestrate enterprise Dynamics 365 core architectures and Power Platform systems, fusing strict structural engineering with a fluid, creative delivery mindset.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center bg-white text-slate-950 font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,255,255,0.1)] text-xs uppercase tracking-widest">
+                    Initiate Engagement <i class="ri-arrow-right-up-line ml-2 text-md"></i>
+                </a>
+                <a href="resume.pdf" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center bg-slate-900/60 border border-slate-800 hover:border-slate-700 text-slate-300 font-medium px-8 py-4 rounded-xl transition-all text-xs uppercase tracking-widest backdrop-blur">
+                    Retrieve Dossier (CV)
+                </a>
+            </div>
+        </div>
+        
+        <!-- Abstract Motion Backdrop Ornament -->
+        <div class="absolute right-0 top-1/4 -z-10 w-72 h-72 bg-gradient-to-tr from-cyan-500/10 to-transparent blur-3xl rounded-full pointer-events-none hidden md:block"></div>
+    </section>
 
-<footer class="mt-24 text-slate-500 border-t border-slate-800 pt-6">
-© 2026 Manish Kumar Vishwakarma
-</footer>
-</div>
+    <!-- CREATIVE ASPECT MINDSET SHOWCASE -->
+    <section id="creative-mindset" class="py-24 px-6 max-w-5xl mx-auto border-t border-slate-900/60 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-xs font-bold tracking-widest text-purple-400 uppercase mb-2">// Creative DNA</p>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-6">The Intersection of Logic & Artistry</h2>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6 font-light">
+                    Enterprise code without intuition is just computation. I reject uninspired, out-of-the-box setups. Whether structuring a massive multi-tenant lead database schema or sketching modular digital blueprints, my methodology balances system logic with creative flow.
+                </p>
+                <div class="flex items-center space-x-6 text-xs font-mono text-slate-500">
+                    <span class="flex items-center"><i class="ri-focus-3-line text-[#00F0FF] mr-2"></i> Clean Semantics</span>
+                    <span class="flex items-center"><i class="ri-rhythm-line text-purple-400 mr-2"></i> Scalable Design</span>
+                </div>
+            </div>
+            
+            <!-- Interactive Visual Board -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gradient-to-b from-slate-900/80 to-slate-950 p-6 rounded-2xl border border-slate-850 hover:border-purple-500/40 transition-all duration-300 group">
+                    <h4 class="text-white text-md font-bold mb-2 group-hover:text-purple-400 transition-colors">Intuitive Strategy</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">Transforming ambiguous client demands into crisp, visual technical architectural maps.</p>
+                </div>
+                <div class="bg-gradient-to-b from-slate-900/80 to-slate-950 p-6 rounded-2xl border border-slate-850 mt-4 hover:border-cyan-500/40 transition-all duration-300 group">
+                    <h4 class="text-white text-md font-bold mb-2 group-hover:text-[#00F0FF] transition-colors">Fluid Execution</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">Custom component and UI extensions that run flawlessly without looking blocky or dated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH CAPABILITIES GRID -->
+    <section id="expertise" class="py-24 px-6 max-w-5xl mx-auto border-t border-slate-900/60">
+        <div class="mb-16">
+            <p class="text-xs font-bold tracking-widest text-[#00F0FF] uppercase mb-2">// Architectural Arsenal</p>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white">Core Capabilities</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-[#090D1A]/40 border border-slate-850 p-8 rounded-2xl transition-all duration-300 neon-glow group">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/80 flex items-center justify-center border border-slate-800 text-[#00F0FF] mb-6 group-hover:scale-110 transition-transform">
+                    <i class="ri-shape-2-line text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-4">Core Systems</h3>
+                <ul class="space-y-3 text-xs tracking-wide text-slate-400 font-light">
+                    <li><span class="text-white font-medium">Dynamics 365 CE</span> Ecosystem Architecture</li>
+                    <li>Advanced Custom <span class="text-white font-medium">Field Service</span> Configurations</li>
+                    <li>High-Volume Enterprise Lead Engines</li>
+                    <li>Relational Dataverse Structural Schemas</li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-[#090D1A]/40 border border-slate-850 p-8 rounded-2xl transition-all duration-300 neon-glow group">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/80 flex items-center justify-center border border-slate-800 text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                    <i class="ri-terminal-window-line text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-4">Advanced Engineering</h3>
+                <ul class="space-y-3 text-xs tracking-wide text-slate-400 font-light">
+                    <li>Robust <span class="text-white font-medium">C# & .NET Core</span> Backend Microservices</li>
+                    <li>Transactional CRM Isolated Assembly Plugins</li>
+                    <li>Client-Side Object Object Modeling via JavaScript</li>
+                    <li>Resilient External Restful Webhook Protocols</li>
+                </ul>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-[#090D1A]/40 border border-slate-850 p-8 rounded-2xl transition-all duration-300 neon-glow group">
+                <div class="w-12 h-12 rounded-xl bg-slate-900/80 flex items-center justify-center border border-slate-800 text-[#00F0FF] mb-6 group-hover:scale-110 transition-transform">
+                    <i class="ri-bubble-chart-line text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-4">Automation Matrix</h3>
+                <ul class="space-y-3 text-xs tracking-wide text-slate-400 font-light">
+                    <li>Full <span class="text-white font-medium">Microsoft Power Platform</span> Orchestration</li>
+                    <li>Tailored Model-Driven & Custom Canvas Apps</li>
+                    <li>High-Scale Power Automate Background Workflows</li>
+                    <li>Secure Exterior Power Pages Portals</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section id="experience" class="py-24 px-6 max-w-5xl mx-auto border-t border-slate-900/60">
+        <div class="mb-16">
+            <p class="text-xs font-bold tracking-widest text-[#00F0FF] uppercase mb-2">// History</p>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white">Professional Trajectory</h2>
+        </div>
+
+        <div class="relative border-l border-slate-850 ml-2 md:ml-4 space-y-12">
+            <!-- Item 1 -->
+            <div class="relative pl-8 md:pl-10 group">
+                <div class="absolute -left-[6px] top-2 w-3 h-3 rounded-full bg-[#050811] border-2 border-[#00F0FF] z-10 shadow-[0_0_10px_#00F0FF]"></div>
+                <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-[#00F0FF] transition-colors">Development Lead & Technical Consultant</h3>
+                        <p class="text-xs text-slate-400 font-mono mt-1">Enterprise Cloud Platforms Division</p>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest text-[#00F0FF] uppercase bg-cyan-950/40 border border-cyan-900/50 px-3 py-1 rounded-full mt-2 md:mt-0 inline-block w-fit">
+                        Jan 2026 — Present
+                    </span>
+                </div>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-400 max-w-3xl list-disc pl-4 font-light leading-relaxed">
+                    <li>Supervising structural integrity parameters and solution blueprints for highly-integrated agile delivery streams.</li>
+                    <li>Overhauling core multi-million tier CRM databases to resolve runtime transactional locks.</li>
+                    <li>Enforcing elegant development guidelines across global consulting delivery ecosystems.</li>
+                </ul>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="relative pl-8 md:pl-10 group">
+                <div class="absolute -left-[6px] top-2 w-3 h-3 rounded-full bg-[#050811] border-2 border-slate-700 group-hover:border-purple-400 transition-colors z-10"></div>
+                <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">Senior Technical Consultant</h3>
+                        <p class="text-xs text-slate-400 font-mono mt-1">Global Core Systems Architecture</p>
+                    </div>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase bg-slate-900 border border-slate-800 px-3 py-1 rounded-full mt-2 md:mt-0 inline-block w-fit">
+                        Prior Tenure
+                    </span>
+                </div>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-400 max-w-3xl list-disc pl-4 font-light leading-relaxed">
+                    <li>Engineered performant, decoupled system dependencies using custom isolated backend assemblies.</li>
+                    <li>Integrated real-time mobile tracking frameworks into localized field service modules.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES & MEDIUM DEEPDIVE -->
+    <section id="projects" class="py-24 px-6 max-w-5xl mx-auto border-t border-slate-900/60">
+        <div class="mb-16">
+            <p class="text-xs font-bold tracking-widest text-[#00F0FF] uppercase mb-2">// Artifacts</p>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white">Case Studies & Creative Insights</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Case Study 1 -->
+            <div class="bg-[#090D1A]/20 border border-slate-850 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 p-8 flex flex-col justify-between relative group">
+                <div>
+                    <span class="text-[9px] uppercase tracking-widest text-[#00F0FF] font-bold font-mono">Real-Time Core Engine</span>
+                    <h3 class="text-lg font-bold text-white mt-4 mb-3 group-hover:text-[#00F0FF] transition-colors">High-Concurrency Lead Pipeline</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        Designed an automated routing canvas engine inside Dynamics 365 CE. Used asynchronous transaction queuing structures to prevent payload data loss under high stress.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-6">
+                    <span class="text-[10px] bg-slate-900 px-2.5 py-1 rounded border border-slate-800 font-mono">D365 Core</span>
+                    <span class="text-[10px] bg-slate-900 px-2.5 py-1 rounded border border-slate-800 font-mono">Asynchronous Plugins</span>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="bg-[#090D1A]/20 border border-slate-850 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 p-8 flex flex-col justify-between relative group">
+                <div>
+                    <span class="text-[9px] uppercase tracking-widest text-purple-400 font-bold font-mono">Field Logistics Automation</span>
+                    <h3 class="text-lg font-bold text-white mt-4 mb-3 group-hover:text-purple-400 transition-colors">Field Service Dispatch Refactoring</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        Optimized field service inventory matrices and resource scheduling routines. Built dynamic JavaScript extensions ensuring seamless telemetry mapping on specialized field gear.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-6">
+                    <span class="text-[10px] bg-slate-900 px-2.5 py-1 rounded border border-slate-800 font-mono">Field Modules</span>
+                    <span class="text-[10px] bg-slate-900 px-2.5 py-1 rounded border border-slate-800 font-mono">JavaScript Core</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Blogging Callout -->
+        <div class="bg-gradient-to-r from-[#090D1A] via-[#0D1326] to-[#090D1A] border border-slate-850 p-8 rounded-2xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div class="max-w-xl">
+                <div class="flex items-center space-x-2 text-[#00F0FF] mb-3">
+                    <i class="ri-wordpress-fill text-lg"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider font-mono">Deep Tech Publication Platform</span>
+                </div>
+                <h4 class="text-md font-bold text-white mb-2">DevTact: Deconstructing Architecture</h4>
+                <p class="text-xs text-slate-400 font-light leading-relaxed">
+                    I run a technical workspace breaking down critical enterprise failures, complex plugin dependencies, and structural design limitations in the Microsoft cloud paradigm.
+                </p>
+            </div>
+            <a href="https://devtact.wordpress.com" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center inline-flex items-center justify-center bg-white text-slate-950 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all hover:bg-slate-200">
+                Read Articles <i class="ri-arrow-right-line ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- CONTACT & SUBMISSION TERMINAL -->
+    <section id="contact" class="py-24 px-6 max-w-5xl mx-auto border-t border-slate-900/60">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <p class="text-xs font-bold tracking-widest text-[#00F0FF] uppercase mb-2">// Communications</p>
+                <h2 class="text-3xl font-extrabold tracking-tight text-white mb-6">Let's Build Something Fluid</h2>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-8 font-light max-w-sm">
+                    Available for high-level technical advisory boards, global system optimization, or development lead orchestrations.
+                </p>
+                
+                <div class="space-y-4 font-mono text-xs">
+                    <a href="https://linkedin.com/in/manishkumar-vishwakarma" target="_blank" class="flex items-center space-x-3 text-slate-400 hover:text-white transition-colors w-fit">
+                        <i class="ri-linkedin-box-line text-lg text-[#00F0FF]"></i>
+                        <span>linkedin.com/in/manishkumar-vishwakarma</span>
+                    </a>
+                    <a href="mailto:your-email@domain.com" class="flex items-center space-x-3 text-slate-400 hover:text-white transition-colors w-fit">
+                        <i class="ri-mail-line text-lg text-[#00F0FF]"></i>
+                        <span>your-email@domain.com</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="bg-[#090D1A]/50 border border-slate-850 p-6 sm:p-8 rounded-2xl backdrop-blur">
+                <form action="#" method="POST" class="space-y-4" onsubmit="event.preventDefault();">
+                    <div>
+                        <label for="name" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 font-mono">Identity / Name</label>
+                        <input type="text" id="name" required class="w-full bg-[#050811] border border-slate-850 focus:border-[#00F0FF] text-white px-4 py-2.5 rounded-xl text-xs outline-none transition-all font-light">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 font-mono">Corporate Email</label>
+                        <input type="email" id="email" required class="w-full bg-[#050811] border border-slate-850 focus:border-[#00F0FF] text-white px-4 py-2.5 rounded-xl text-xs outline-none transition-all font-light">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 font-mono">System / Architecture Outline</label>
+                        <textarea id="message" rows="4" required class="w-full bg-[#050811] border border-slate-850 focus:border-[#00F0FF] text-white px-4 py-2.5 rounded-xl text-xs outline-none transition-all resize-none font-light"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs uppercase tracking-widest py-3.5 rounded-xl transition-all cursor-pointer">
+                        Transmit System Data
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Terminal Footer Boundary -->
+        <div class="mt-24 pt-8 border-t border-slate-900/60 flex flex-col sm:flex-row items-center justify-between text-[10px] text-slate-500 font-mono gap-4">
+            <p>© 2026 Manishkumar Vishwakarma. Fusing logic and creative runtime interfaces. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-slate-400">Security Layers</a>
+                <a href="#" class="hover:text-slate-400">Terms of Deployment</a>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
